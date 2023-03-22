@@ -2,7 +2,7 @@
 
 int main(){
 
-    printf("Hello world");
+    printf("Welcome to Vector-Editor");
 
     return 0;
 };

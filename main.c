@@ -7,14 +7,12 @@ int main(){
     char* input_user;
 
     printf("Welcome to Vector-Editor \n");
-    input_user = menu_prompt();
-    Point * p1 = create_point (88, 15);
-    Point * p2 = create_point (21, 44);
-    Line * l = create_line (p1 ,p2);
-    print_line (l);
-    delete_line(l);
-    delete_point(p1);
-    delete_point(p2);
+    //input_user = menu_prompt();
+    Point * p = create_point(8, 54);
+    Circle * c = create_circle(p, 8);
+    print_circle(c);
+    delete_circle(c);
+
 
 
     return 0;

@@ -18,10 +18,8 @@ void print_point(Point * p){
 
 Line *create_line(Point * p1, Point * p2){
     Line *line = (Line *) malloc(sizeof (Line));
-    line->p1->pos_x = p1->pos_x;
-    line->p1->pos_y = p1->pos_y;
-    line->p2->pos_x = p2->pos_x;
-    line->p2->pos_y = p2->pos_y;
+    line->p1 = p1;
+    line->p2 = p2;
     return line;
 }
 void delete_line(Line * line){
@@ -76,10 +74,11 @@ Polygon *create_polygon(int n){
     Polygon * polygon = (Polygon *) malloc(sizeof (Polygon));
     polygon->n = n;
 
+
 }
 void delete_polygon(Polygon * polygon){
     free(polygon);
 }
 void print_polygon(Polygon * polygon){
-    printf("POLYGON")
+    printf("POLYGON");
 }

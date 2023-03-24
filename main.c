@@ -8,10 +8,8 @@ int main(){
 
     printf("Welcome to Vector-Editor \n");
     //input_user = menu_prompt();
-    Point * p = create_point(8, 54);
-    Circle * c = create_circle(p, 8);
-    print_circle(c);
-    delete_circle(c);
+    Shape *f1 = create_line_shape (10, 15, 21, 25);
+    print_shape (f1);
 
 
 

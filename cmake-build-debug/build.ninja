@@ -61,6 +61,24 @@ build CMakeFiles/vector_editor.dir/shapes.c.obj: C_COMPILER__vector_editor_Debug
   OBJECT_DIR = CMakeFiles\vector_editor.dir
   OBJECT_FILE_DIR = CMakeFiles\vector_editor.dir
 
+build CMakeFiles/vector_editor.dir/structure.c.obj: C_COMPILER__vector_editor_Debug C$:/Users/matte/CLionProjects/vector-editor/structure.c || cmake_object_order_depends_target_vector_editor
+  DEP_FILE = CMakeFiles\vector_editor.dir\structure.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles\vector_editor.dir
+  OBJECT_FILE_DIR = CMakeFiles\vector_editor.dir
+
+build CMakeFiles/vector_editor.dir/menu.c.obj: C_COMPILER__vector_editor_Debug C$:/Users/matte/CLionProjects/vector-editor/menu.c || cmake_object_order_depends_target_vector_editor
+  DEP_FILE = CMakeFiles\vector_editor.dir\menu.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles\vector_editor.dir
+  OBJECT_FILE_DIR = CMakeFiles\vector_editor.dir
+
+build CMakeFiles/vector_editor.dir/id.c.obj: C_COMPILER__vector_editor_Debug C$:/Users/matte/CLionProjects/vector-editor/id.c || cmake_object_order_depends_target_vector_editor
+  DEP_FILE = CMakeFiles\vector_editor.dir\id.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles\vector_editor.dir
+  OBJECT_FILE_DIR = CMakeFiles\vector_editor.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target vector_editor
@@ -69,7 +87,7 @@ build CMakeFiles/vector_editor.dir/shapes.c.obj: C_COMPILER__vector_editor_Debug
 #############################################
 # Link the executable vector_editor.exe
 
-build vector_editor.exe: C_EXECUTABLE_LINKER__vector_editor_Debug CMakeFiles/vector_editor.dir/main.c.obj CMakeFiles/vector_editor.dir/shapes.c.obj
+build vector_editor.exe: C_EXECUTABLE_LINKER__vector_editor_Debug CMakeFiles/vector_editor.dir/main.c.obj CMakeFiles/vector_editor.dir/shapes.c.obj CMakeFiles/vector_editor.dir/structure.c.obj CMakeFiles/vector_editor.dir/menu.c.obj CMakeFiles/vector_editor.dir/id.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\vector_editor.dir

@@ -1,0 +1,11 @@
+# ninja log v5
+13	140	7013948404997441	CMakeFiles/vector_editor.dir/main.c.obj	a7996b288f1a7ca3
+8	94	7013587306262228	CMakeFiles/vector_editor.dir/menu.c.obj	94c7ea7cf52a1010
+122	345	7013968546265745	vector_editor.exe	e95eb3f7507630c
+3	121	7013968544150403	CMakeFiles/vector_editor.dir/shapes.c.obj	b9b6515a9ed44926
+17	277	7013935759103299	CMakeFiles/vector_editor.dir/structure.c.obj	4db25524f788fa34
+8	77	7013981467252176	CMakeFiles/vector_editor.dir/id.c.obj	cfc8c1f010ee91
+2	87	7013981467363068	CMakeFiles/vector_editor.dir/shapes.c.obj	b9b6515a9ed44926
+4	47	7013982219802896	CMakeFiles/vector_editor.dir/id.c.obj	cfc8c1f010ee91
+1	59	7013982219953286	CMakeFiles/vector_editor.dir/shapes.c.obj	b9b6515a9ed44926
+59	128	7013982220587112	vector_editor.exe	54a6247d3e789858

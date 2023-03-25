@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.3.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\Cam\CLionProjects\vector-editor -B C:\Users\Cam\CLionProjects\vector-editor\cmake-build-debug
+"C:\_Utils\JetBrains\CLion 2022.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/_Utils/JetBrains/CLion 2022.3.1/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\matte\CLionProjects\vector-editor -B C:\Users\matte\CLionProjects\vector-editor\cmake-build-debug
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Cam/CLionProjects/vector-editor/cmake-build-debug
+-- Build files have been written to: C:/Users/matte/CLionProjects/vector-editor/cmake-build-debug

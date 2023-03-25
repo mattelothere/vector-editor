@@ -1,7 +1,12 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
-typedef struct {
+
+                /* ----------------------------- *
+                 * Definition of the new structs *
+                 * ----------------------------- */
+
+typedef struct point {
     int pos_x;
     int pos_y;
 }Point;
@@ -13,13 +18,13 @@ typedef struct line {
 
 typedef struct square {
     Point *p;
-    int lenght;
+    int length;
 
 }Square;
 
 typedef struct rectangle {
     Point *p;
-    int lenght;
+    int length;
     int width;
 }Rectangle;
 
@@ -32,6 +37,12 @@ typedef struct polygon {
     int n;
     Point ** points;
 }Polygon;
+
+
+
+        /* --------------------------------------------------------------- *
+         * Prototypes of the functions responsible for creating the shapes *
+         * --------------------------------------------------------------- */
 
 Point *create_point(int px, int py);
 void delete_point(Point * point);

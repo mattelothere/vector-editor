@@ -56,7 +56,7 @@ void print_line(Line * line){
 /*
  * Square struct, composed of a point (top left corner) and a length
  */
-//TODO: Is the point indeed representing the top-left corner
+//TODO: Is the point indeed representing the top-left corner ( YES )
 
 Square *create_square(Point * point, int length){
     Square *square = (Square *) malloc(sizeof (Square));
@@ -120,8 +120,8 @@ void print_circle(Circle * circle){
 //TODO : finish the implementation of a polygon
 Polygon *create_polygon(int n){
     Polygon * polygon = (Polygon *) malloc(sizeof (Polygon));
-    polygon->n = n;     //TODO
-
+    polygon->n = n;
+    polygon->points = malloc(n * sizeof (Point));
     return polygon;
 }
 void delete_polygon(Polygon * polygon){

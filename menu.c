@@ -23,7 +23,6 @@ char* menu_prompt(){
            "\n"
            "~> ");
 
-
-    scanf("%s", input_user);    //TODO: isn't better to use fgets or gets, "because its more secure" or whatever?
-    return input_user;
+    fgets(input_user, 10,stdin);//TODO: isn't better to use fgets or gets, "because its more secure" or whatever?
+    return input_user;                  //TODO: i work but we need to put a max length doesn't it take more memory ?(camille)
 }

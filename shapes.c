@@ -70,11 +70,13 @@ Shape *create_circle_shape(int px, int py, int radius){
     return shp;
 }
 Shape *create_polygon_shape(int lst[], int n){  //TODO : finish the implementation of the thingy
-    Shape *shp = create_empty_shape(POLYGON);
-    Polygon *polygon = create_polygon(n);
-    shp->ptrShape = polygon;
-    return shp;
-
+    if (n%2 == 0) {
+        Shape *shp = create_empty_shape(POLYGON);
+        Polygon *polygon = create_polygon(n);
+        shp->ptrShape = polygon;
+        return shp;
+    }
+    return NULL;
 
 
 

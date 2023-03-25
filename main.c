@@ -19,24 +19,14 @@ int main(){
 
 
     // creating all the shapes and printing them out to see how it works
-    Shape* myPoint = create_point_shape(1, 2);
-    print_shape(myPoint);
+    Shape *p1 = create_point_shape(10, 15);
+    print_shape (p1);
 
+    Shape *p2 = create_point_shape(8, 3);
+    print_shape (p2);
 
-    Shape* myLine = create_line_shape(2, 5, 3, 7);
-    print_shape(myLine);
-
-    Shape* mySquare = create_square_shape(11, 13, 3);
-    print_shape(mySquare);
-
-    Shape* myRectangle = create_rectangle_shape(2,3, 2, 5);
-    print_shape(myRectangle);
-
-    Shape* myCircle = create_circle_shape(2, 0, 3);
-    print_shape(myCircle);
-
-    int ls[] = {1,2,3,5,6,4};
-    Shape* myPolygon = create_polygon_shape(ls, 3);
+    int* ls[] = {p1, p2};
+    Shape* myPolygon = create_polygon_shape(ls, 2);
     print_shape(myPolygon);
 
 

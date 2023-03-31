@@ -19,14 +19,10 @@ int main(){
 
 
     // creating all the shapes and printing them out to see how it works
-    Shape *p1 = create_point_shape(10, 15);
-    print_shape (p1);
 
-    Shape *p2 = create_point_shape(8, 3);
-    print_shape (p2);
 
-    int* ls[] = {p1, p2};
-    Shape* myPolygon = create_polygon_shape(ls, 2);
+    int ls[] = {6, 7, 87, 54, 54};
+    Shape* myPolygon = create_polygon_shape(ls, 5);
     print_shape(myPolygon);
 
 

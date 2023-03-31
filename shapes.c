@@ -73,6 +73,10 @@ Shape *create_polygon_shape(int lst[], int n){  //TODO : finish the implementati
     if (n%2 == 0) {
         Shape *shp = create_empty_shape(POLYGON);
         Polygon *polygon = create_polygon(n);
+        for(int i = 0; i<n; i += 2){
+            Point *p = create_point(lst[i], lst[i+1]);
+            polygon->points[i/2] = p;
+        }
         shp->ptrShape = polygon;
         return shp;
     }

@@ -56,7 +56,6 @@ void print_line(Line * line){
 /*
  * Square struct, composed of a point (top left corner) and a length
  */
-//TODO: Is the point indeed representing the top-left corner ( YES )
 
 Square *create_square(Point * point, int length){
     Square *square = (Square *) malloc(sizeof (Square));
@@ -121,12 +120,15 @@ void print_circle(Circle * circle){
 Polygon *create_polygon(int n){
     Polygon * polygon = (Polygon *) malloc(sizeof (Polygon));
     polygon->n = n;
-    polygon->points = malloc(n * sizeof (Point));
+    polygon->points = malloc(n/2 * sizeof (Point));
     return polygon;
 }
 void delete_polygon(Polygon * polygon){
     free(polygon);
 }
 void print_polygon(Polygon * polygon){
-    printf("POLYGON: n=%d <!unfinished!>\n", polygon->n);      //TODO
+    printf("POLYGON: n=%d,", polygon->n);      //n is the number of "sommets"
+    for(int i =0; i< polygon-> n /2; i++){
+        printf("point %d x:%d y:%d\n",i+1, polygon->points[i]->pos_x , polygon->points[i]->pos_y);
+    }
 }

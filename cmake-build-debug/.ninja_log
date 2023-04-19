@@ -86,3 +86,11 @@
 52	118	7019631004760981	vector_editor.exe	8ff794d0c6cbf68c
 1	51	7019631129113887	CMakeFiles/vector_editor.dir/main.c.obj	a7996b288f1a7ca3
 51	118	7019631129744923	vector_editor.exe	8ff794d0c6cbf68c
+3	292	7036134015692022	CMakeFiles/vector_editor.dir/main.c.obj	a7996b288f1a7ca3
+294	918	7036134021924209	vector_editor.exe	8ff794d0c6cbf68c
+3	200	7036137581155857	CMakeFiles/vector_editor.dir/shapes.c.obj	b9b6515a9ed44926
+201	389	7036137582971227	vector_editor.exe	8ff794d0c6cbf68c
+5	159	7036137712323609	CMakeFiles/vector_editor.dir/main.c.obj	a7996b288f1a7ca3
+160	353	7036137714279914	vector_editor.exe	8ff794d0c6cbf68c
+3	160	7036143707079202	CMakeFiles/vector_editor.dir/shapes.c.obj	b9b6515a9ed44926
+161	367	7036143709108511	vector_editor.exe	8ff794d0c6cbf68c

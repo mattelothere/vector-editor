@@ -69,11 +69,12 @@ Shape *create_circle_shape(int px, int py, int radius){
     shp->ptrShape = circle;
     return shp;
 }
-Shape *create_polygon_shape(int lst[], int n){  //TODO : finish the implementation of the thingy
-    if (n%2 == 0) {
+
+Shape *create_polygon_shape(int lst[], int n){
+    if ((n%2 == 0) && (lst[0] == lst[n-2]) && (lst[1] == lst[n-1])) {   //check if the number of coordinates if pair, then if the polygon is closed
         Shape *shp = create_empty_shape(POLYGON);
         Polygon *polygon = create_polygon(n);
-        for(int i = 0; i<n; i += 2){
+        for(int i = 0; i<n; i += 2){        // if we need to cancel the last point, increment n by 2
             Point *p = create_point(lst[i], lst[i+1]);
             polygon->points[i/2] = p;
         }
@@ -98,27 +99,29 @@ void delete_shape(Shape * shape){
 }
 
 
-void print_shape(Shape * shape){    // print the id then in function of the shape type it call the print needed
+void print_shape(Shape * shape) {    // print the id then in function of the shape type it call the print needed
 
     printf("ID : %d | ", shape->id);
+    switch (shape->shape_type) {
+        case 0:
+            print_point(shape->ptrShape);
+            break;
+        case 1:
+            print_line(shape->ptrShape);
+            break;
+        case 2:
+            print_square(shape->ptrShape);
+            break;
+        case 3:
+            print_rectangle(shape->ptrShape);
+            break;
+        case 4:
+            print_circle(shape->ptrShape);
+            break;
+        case 5:
+            print_polygon(shape->ptrShape);
+            break;
+    }
 
 
-    if (shape->shape_type == 0){    // Point
-        print_point(shape->ptrShape);
-    }
-    else if (shape->shape_type == 1){   // Line
-        print_line( shape->ptrShape);
-    }
-    else if (shape->shape_type == 2){   // Square
-        print_square( shape->ptrShape);
-    }
-    else if (shape->shape_type == 3){   // Rectangle
-        print_rectangle( shape->ptrShape);
-    }
-    else if (shape->shape_type == 4){   // Circle
-        print_circle( shape->ptrShape);
-    }
-    else if (shape->shape_type == 5) {   // Polygon
-        print_polygon(shape->ptrShape);
-    }
 }

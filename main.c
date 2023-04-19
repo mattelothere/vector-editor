@@ -21,8 +21,8 @@ int main(){
     // creating all the shapes and printing them out to see how it works
 
 
-    int ls[] = {6, 7, 87, 54, 54};
-    Shape* myPolygon = create_polygon_shape(ls, 5);
+    int ls[] = {6, 7, 87, 54, 6, 7};
+    Shape* myPolygon = create_polygon_shape(ls, 6);
     print_shape(myPolygon);
 
 

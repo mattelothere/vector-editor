@@ -48,7 +48,7 @@ char* menu_prompt(){
         // remove ending \n
         int len = strlen(userInput);
         if (len < MAX_INPUT_LENGTH){    // if the f-got string has length < max_size, then the last '\n' char has been
-            userInput[len - 1] = '\0';   // taken into account, meaning we have to remove it (index len-1)
+            userInput[len-1] = '\0';   // taken into account, meaning we have to remove it (index len-1)
         }
         else{
             fflush(stdin);          // in contrary, we have to clear what is left in the buffer and re-ask the input

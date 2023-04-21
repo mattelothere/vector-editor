@@ -8,7 +8,7 @@
 #define SHAPE_MAX 100 // Maximum number of shapes
 #define BOOL int
 
-#import "shapes.h"
+#include "shapes.h"
 
 struct area {
     unsigned int width; // Number of pixels in width or number of columns (y-axis)

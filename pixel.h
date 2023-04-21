@@ -5,6 +5,8 @@
 #ifndef VECTOR_EDITOR_PIXEL_H
 #define VECTOR_EDITOR_PIXEL_H
 
+#include "structure.h"
+
 struct pixel {
     int px;
     int py;

@@ -48,8 +48,8 @@ void delete_area(Area* area){
 void draw_area(Area* area){     //TODO doesnt work
     int* L;
     for(int i = 0; i< area->nb_shape; i++){
-        L = Pixel** create_shape_to_pixel(area->shapes[i]);
-        area->mat[L[0]][L[1]] = 1
+//        L = (Pixel**) create_shape_to_pixel(area->shapes[i]);
+        area->mat[L[0]][L[1]] = 1;
     }
 }
 void print_area(Area* area){

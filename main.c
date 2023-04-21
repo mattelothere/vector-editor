@@ -7,7 +7,7 @@ int main(){
     /*
      * Put here the code that initializes stuff used in the future
      */
-//    menu_prompt();
+     menu_prompt();
 
 
 
@@ -20,6 +20,6 @@ int main(){
     /*
      * Put here the code that cleans up everything
      */
-
+    printf("PGRAM DONE");
     return 0;
 }

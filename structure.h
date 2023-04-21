@@ -6,6 +6,7 @@
                  * Definition of the new structs *
                  * ----------------------------- */
 
+
 typedef struct point {
     int pos_x;
     int pos_y;
@@ -67,5 +68,7 @@ void print_circle(Circle * circle);
 Polygon *create_polygon(int n);
 void delete_polygon(Polygon * polygon);
 void print_polygon(Polygon * polygon);
+
+
 
 #endif

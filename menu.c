@@ -1,28 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
+#include <string.h>
+
+#define MAX_INPUT_LENGTH 256    // this is the maximum length the user's input can measure
+
+/*
+ * The purpose of this file is to list all the code useful to the display of the menu,
+ * and the user interaction with it.
+ */
 
 
-// TODO : maybe its better to define menu_prompt() as a void func, which changes the value of input_user using a ptr ?
-// and returns nothing,
-// because as of now, we have redundancy of the char* variable "input_user"
 
-char* menu_prompt(){
-    char* input_user = (char*) malloc(4*sizeof(char));     // init to error in order to be detectable
 
-    printf("------ Welcome to Vector-Editor ------\n");
-
-    // https://stackoverflow.com/questions/1752079/in-c-can-a-long-printf-statement-be-broken-up-into-multiple-lines
-    // whitespace between two strings equals concatenation of strings
+void print_menu(){
     printf(">Enter 'help' for help\n"
            ">Please select an action:\n"
            "\t|A- Add a shape\n"
            "\t|B- Display the list of shapes\n"
-           "\t"
-           "|(...)\n"
-           "\n"
-           "~> ");
+           "~>");
+}
 
-    fgets(input_user, 10,stdin);//TODO: isn't better to use fgets or gets, "because its more secure" or whatever?
-    return input_user;                  //TODO: i work but we need to put a max length doesn't it take more memory ?(camille)
+int isInputValid(char* acceptedInput[], int n_acceptedInputs, char* userInput){
+    // takes the input given by the user, and returns 1 if it is part of the accepted Inputs, 0 otherwise
+    int is_valid = 0;
+
+    // compare every string of the array of strings acceptedInputs and see if userInput
+    for(int i=0; i<n_acceptedInputs; i++){
+        if (strcmp(acceptedInput[i], userInput) == 0)   // == 0 means the two strings are the same
+            is_valid = 1;
+    }
+    return is_valid;
+}
+
+
+char* menu_prompt(){
+
+    // whitespace between two strings equals concatenation of strings : https://stackoverflow.com/questions/1752079
+    printf("------ Welcome to Vector-Editor ------\n");
+
+    char* userInput = (char*) malloc(MAX_INPUT_LENGTH * sizeof(char));
+    // userInput prompt loop
+    int badInput = 0;   // by default the input is not wrong
+    do {
+        print_menu();
+        fgets(userInput, MAX_INPUT_LENGTH + 1, stdin);     //fgets reads (size - 1) characters
+        // remove ending \n
+        int len = strlen(userInput);
+        if (len < MAX_INPUT_LENGTH){    // if the f-got string has length < max_size, then the last '\n' char has been
+            userInput[len - 1] = '\0';   // taken into account, meaning we have to remove it (index len-1)
+        }
+        else{
+            fflush(stdin);          // in contrary, we have to clear what is left in the buffer and re-ask the input
+            badInput = 1;
+        }
+    } while (badInput);
+
+    printf("Your choice is: %s\n", userInput);
+    return userInput;
 }

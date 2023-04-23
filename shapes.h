@@ -1,7 +1,6 @@
 #ifndef SHAPES_H
 #define SHAPES_H
 
-#include "pixel.h"
 /*              ----------SHAPES----------                  *
  * Module composed of shapes.c and shapes.h files.          *
  * This module will group the structured types of each shape*
@@ -46,5 +45,6 @@ Shape *create_polygon_shape(int lst[], int n);
 
 void delete_shape(Shape * shape);
 void print_shape(Shape * shape);
+
 
 #endif

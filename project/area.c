@@ -19,7 +19,6 @@ Area* create_area(unsigned int width, unsigned int height) {
     for (int i = 0; i < SHAPE_MAX; i++) {
         area->shapes[i] = (Shape*) malloc(sizeof(Shape));
     }
-    return area;
 }
 
 void add_shape_to_area(Area* area, Shape* shape){
@@ -46,7 +45,6 @@ void delete_area(Area* area){
     clear_area(area);
     erase_area(area);
 }
-/*
 void draw_area(Area* area){     //TODO doesnt work
     int* L;
     for(int i = 0; i< area->nb_shape; i++){
@@ -54,7 +52,6 @@ void draw_area(Area* area){     //TODO doesnt work
         area->mat[L[0]][L[1]] = 1;
     }
 }
-*/
 void print_area(Area* area){
     for (int i = 0; i< area->width; i++){
         for (int j = 0; j< area->height; j++) {

@@ -46,11 +46,12 @@ int isInputValid(char* acceptedInput[], int n_acceptedInput, char* userInput){
 
 char* main_menu_prompt(){
 
+
+
     char* userInput = (char*) malloc(MAX_INPUT_LENGTH * sizeof(char));
     // userInput prompt loop
     int badInput = 0;   // by default the input is not wrong
     do {
-        printf("\n");   // additional print for spacing and clarity
         print_menu(first_menu);
         fgets(userInput, MAX_INPUT_LENGTH + 1, stdin);     //fgets reads (size - 1) characters
         // remove ending \n

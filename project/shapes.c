@@ -23,7 +23,7 @@
 
 
 // This function is only used in other functions and the user should not interact with it.
-    // The idea is to create an empty shape of varying size (a rect takes more memory space than a point)
+// The idea is to create an empty shape of varying size (a rect takes more memory space than a point)
 // and then modify the fields of this new empty shape accordingly with the parameters of the corresponding
 // shapes' create_XXXXX_shape() func.
 Shape *create_empty_shape(SHAPE_TYPE shape_type){

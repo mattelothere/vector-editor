@@ -3,6 +3,7 @@
 #include "shapes.h"     // Implementation of all the available shapes
 #include <string.h>
 
+
 int main(){
 
     /*
@@ -26,6 +27,7 @@ int main(){
             looping = 0;
         }
     } while (looping);
+
 
 
     /*

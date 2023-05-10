@@ -139,31 +139,32 @@ void pixel_circle(Circle* circle, Pixel** pixel, int*nb_pixels){
 void pixel_square(Square* square, Pixel** pixel, int* nb_pixels){
     int k = 0;
 
-    Line* line_1 = create_line_shape(square->p->pos_x, square->p->pos_y, square->p->pos_x, square->p->pos_y + square->length);
-    pixel_line(line_1, pixel, nb_pixels);
-    Line* line_2 = create_line_shape(square->p->pos_x, square->p->pos_y + square->length, square->p->pos_x + square->length, square->p->pos_y + square->length);
-    pixel_line(line_2, pixel, nb_pixels);
-    Line* line_3 = create_line_shape(square->p->pos_x + square->length, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y + square->length);
-    pixel_line(line_3, pixel, nb_pixels);
-    Line* line = create_line_shape(square->p->pos_x, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y);
-    pixel_line(line, pixel, nb_pixels);
+    Shape* line_1 = create_line_shape(square->p->pos_x, square->p->pos_y, square->p->pos_x, square->p->pos_y + square->length);
+    pixel_line(line_1->ptrShape, pixel, nb_pixels);
+    Shape* line_2 = create_line_shape(square->p->pos_x, square->p->pos_y + square->length, square->p->pos_x + square->length, square->p->pos_y + square->length);
+    pixel_line(line_2->ptrShape, pixel, nb_pixels);
+    Shape* line_3 = create_line_shape(square->p->pos_x + square->length, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y + square->length);
+    pixel_line(line_3->ptrShape, pixel, nb_pixels);
+    Shape* line = create_line_shape(square->p->pos_x, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y);
+    pixel_line(line->ptrShape, pixel, nb_pixels);
 }
 
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel, int* nb_pixels){
-    Line* line_1 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length);
-    pixel_line(line_1, pixel, nb_pixels);
-    Line* line_2 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
-    pixel_line(line_2, pixel, nb_pixels);
-    Line* line_3 = create_line_shape(rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
-    pixel_line(line_3, pixel, nb_pixels);
-    Line* line = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y);
-    pixel_line(line, pixel, nb_pixels);
+    Shape* line_1 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length);
+    pixel_line(line_1->ptrShape, pixel, nb_pixels);
+    Shape* line_2 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
+    pixel_line(line_2->ptrShape, pixel, nb_pixels);
+    Shape* line_3 = create_line_shape(rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
+    pixel_line(line_3->ptrShape, pixel, nb_pixels);
+    Shape* line = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y);
+    pixel_line(line->ptrShape, pixel, nb_pixels);
 }
+
 void pixel_polygon(Polygon* polygon, Pixel** pixel, int* nb_pixels){
 
     for(int i =0; i<polygon->n-1; i++){
-        Line* line = create_line_shape(polygon->points[i]->pos_x, polygon->points[i]->pos_y, polygon->points[i+1]->pos_x, polygon->points[i+1]->pos_y);
-        pixel_line(line, pixel, nb_pixels);
+        Shape* line = create_line_shape(polygon->points[i]->pos_x, polygon->points[i]->pos_y, polygon->points[i+1]->pos_x, polygon->points[i+1]->pos_y);
+        pixel_line(line->ptrShape, pixel, nb_pixels);
     }
 }
 
@@ -172,6 +173,6 @@ Pixel** create_shape_to_pixel(Shape * shape, int* nb_pixels){
         case POINT:
 
     }
-
+    Pixel** pixel = 0;
     return pixel;
 }

@@ -44,6 +44,11 @@ int main(){
     /*
      * ↓ test zone, the remaining code is here only to test the func, is not "useful" ↓
      */
+
+#include "command.h"
+    Command* myCommand = create_command();
+    read_from_stdin(myCommand);
+
 //    printf("START TEST ZONE\n");
 //
 //    Shape* p1 = create_point_shape(16, 1);

@@ -42,10 +42,21 @@ void read_from_stdin(Command* cmd){
     char* token;
 
     token = strtok(usr_input, separator);
+    strcpy(cmd->name, token);   // first token is the name of the command
     do{
         printf("%s\n", token);
         token = strtok(NULL, separator);
+
+        // TODO : check if sscanf(%d, ...) returns >0 => the token is an int => put it in int_params
+        // using the prev coded func
+        //        if (){
+//            is_an_int = sscanf(...)
+//        }
+
+
     }while(token != NULL);
+
+
 
 
 }

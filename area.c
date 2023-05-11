@@ -46,18 +46,21 @@ void delete_area(Area* area){
     clear_area(area);
     erase_area(area);
 }
-/*
-void draw_area(Area* area){     //TODO doesnt work
-    int* L;
+
+void draw_area(Area* area, int* nb_pixels){     //TODO doesnt work
+    Pixel ** L;
     for(int i = 0; i< area->nb_shape; i++){
-//        L = (Pixel**) create_shape_to_pixel(area->shapes[i]);
-        area->mat[L[0]][L[1]] = 1;
+        L = create_shape_to_pixel(area->shapes[i], nb_pixels);
+        for (int j = 0; j< *nb_pixels; j++) {
+            area->mat[L[j]->px-1][L[j]->py-1] = 1;
+        }
     }
 }
-*/
+
 void print_area(Area* area){
-    for (int i = 0; i< area->width; i++){
-        for (int j = 0; j< area->height; j++) {
+    for (int i = 0; i< area->height; i++){
+        printf("\n");
+        for (int j = 0; j< area->width; j++) {
             switch (area->mat[i][j]) {
                 case 0:
                     printf(".");

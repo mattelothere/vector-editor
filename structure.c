@@ -80,7 +80,7 @@ void print_square(Square * square) {
 Rectangle *create_rectangle(Point * point, int width, int height){
     Rectangle *rectangle = (Rectangle *) malloc(sizeof (Rectangle));
     rectangle->p = point;
-    rectangle->length = height;
+    rectangle->height = height;
     rectangle->width = width;
     return rectangle;
 }
@@ -88,7 +88,7 @@ void delete_rectangle(Rectangle * rectangle){
     free(rectangle);
 }
 void print_rectangle(Rectangle * rectangle){
-    printf("RECTANGLE x=%d y=%d h:%d w:%d\n", rectangle->p->pos_x, rectangle->p->pos_y, rectangle->length, rectangle->width);
+    printf("RECTANGLE x=%d y=%d h:%d w:%d\n", rectangle->p->pos_x, rectangle->p->pos_y, rectangle->height, rectangle->width);
 }
 
 

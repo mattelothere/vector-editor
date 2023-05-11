@@ -25,8 +25,8 @@ void delete_pixel(Pixel* pixel){
 void pixel_point(Shape* shape, Pixel** pixel, int* nb_pixels)
 {
     Point* pt = (Point*) shape->ptrShape;
-    pixel[*nb_pixels] = create_pixel(pt->pos_x, pt->pos_y);
-    (*nb_pixels)++;
+    pixel[0] = create_pixel(pt->pos_x, pt->pos_y);
+    *nb_pixels = 1;
 }
 
 
@@ -36,7 +36,7 @@ void pixel_line(Line* line, Pixel** pixel, int* nb_pixels) {
     int ya = line->p1->pos_y;
     int xb = line->p2->pos_x;
     int yb = line->p2->pos_y;
-    int dx, dy, dmin, dmax, nb_segs, base, remaining, X, Y, j;
+    int dx, dy, dmin, dmax, nb_segs, base, remaining;
     if (line->p1->pos_x > line->p2->pos_x) {
         xa = line->p2->pos_x;
         ya = line->p2->pos_y;
@@ -49,10 +49,7 @@ void pixel_line(Line* line, Pixel** pixel, int* nb_pixels) {
     dmax = MAX(dx, abs(dy));
     nb_segs = dmin + 1;
     base = ((dmax + 1) / (dmin +1));
-    int *segments = (int*) malloc(nb_segs*sizeof(int));
-    for(int i = 0; i< nb_segs; i++){
-        segments[i] = base;
-    }
+    int *segments = (int*) malloc(base*sizeof(int));
     remaining = (dmax + 1) % (dmin +1 );
     int *cumuls = (int*)malloc(nb_segs*sizeof(int));
     cumuls[0] = 0;
@@ -60,74 +57,78 @@ void pixel_line(Line* line, Pixel** pixel, int* nb_pixels) {
         cumuls[i] = ((i*remaining)%(dmin+1) < (i-1)*remaining)%(dmin+1);
         segments[i] = segments[i]+cumuls[i];
     }
-    X = xa;
-    Y = ya;
-    for (int i = 0; i <= nb_segs-1; i++) {
+    int k = *nb_pixels,j, X, Y;
+    for (int i = 0; i < nb_segs-1; i++) {
         if (dy < 0) {
             if (dx > abs(dy)) {
                 for (j = 0; j < segments[i]; j++) {
-                    pixel[*nb_pixels] = create_pixel(X, Y);
-                    X++;
-                    (*nb_pixels)++;
+                    X += j;
+                    pixel[k]->px = X;
+                    pixel[k]->py = Y;
+                    k++;
                 }
                 Y--;
             }
             else {
-                for (j = 0; j < segments[i]; j++){
-                    pixel[*nb_pixels] = create_pixel(X, Y);
-                    Y--;
-                    (*nb_pixels)++;
+                for (j = 0; j < segments[i]; j++) {
+                    Y-= j;
+                    pixel[k]->px = X;
+                    pixel[k]->py = Y;
+                    k++;
                 }
                 X++;
             }
         }
         else {
             if (dx > dy) {
-                for (j = 0; j < segments[i]; j++){
-                    pixel[*nb_pixels] = create_pixel(X, Y);
-                    X ++;
-                    (*nb_pixels)++;
+                for (j = 0; j < segments[i]; j++) {
+                    X += j;
+                    pixel[k]->px = X;
+                    pixel[k]->py = Y;
+                    k++;
                 }
                 Y++;
             }
             else {
-                for (j = 0; j < segments[i]; j++){
-                    pixel[*nb_pixels] = create_pixel(X, Y);
-                    Y ++;
-                    (*nb_pixels)++;
+                for (j = 0; j < segments[i]; j++) {
+                    Y += j;
+                    pixel[k]->px = X;
+                    pixel[k]->py = Y;
+                    k++;
                 }
                 X++;
             }
         }
     }
+    *nb_pixels = k;
 }
 
 void pixel_circle(Circle* circle, Pixel** pixel, int*nb_pixels){
-    int x = 0;
+    int x = 0, k = 0;
     int y = circle->radius;
     int d = circle->radius-1;
+    Pixel * px = NULL;
     while (y>=x) {
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x + x, circle->p->pos_y + y);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x + y, circle->p->pos_y + x);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x - x, circle->p->pos_y + y);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x - y, circle->p->pos_y + x);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x + x, circle->p->pos_y - y);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x + y, circle->p->pos_y - x);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x - x, circle->p->pos_y - y);
-        (*nb_pixels)++;
-        pixel[*nb_pixels] = create_pixel(circle->p->pos_x - y, circle->p->pos_y - x);
-        (*nb_pixels)++;
+        px = create_pixel(circle->p->pos_x + x, circle->p->pos_y + y);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x + y, circle->p->pos_y + x);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x - x, circle->p->pos_y + y);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x - y, circle->p->pos_y + x);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x + x, circle->p->pos_y - y);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x + y, circle->p->pos_y - x);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x - x, circle->p->pos_y - y);
+        pixel[k++] = px;
+        px = create_pixel(circle->p->pos_x - y, circle->p->pos_y - x);
+        pixel[k++] = px;
         if (d < 1) {
             x++;
             d += 2 * x + 1;
-        }
-        else {
+        } else {
             y--;
             x++;
             d += 2 * x - 2 * y + 2;
@@ -142,22 +143,23 @@ void pixel_square(Square* square, Pixel** pixel, int* nb_pixels){
     pixel_line(line_1->ptrShape, pixel, nb_pixels);
     Shape* line_2 = create_line_shape(square->p->pos_x, square->p->pos_y + square->length, square->p->pos_x + square->length, square->p->pos_y + square->length);
     pixel_line(line_2->ptrShape, pixel, nb_pixels);
-    Shape * line_3 = create_line_shape(square->p->pos_x + square->length, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y + square->length);
+    Shape* line_3 = create_line_shape(square->p->pos_x + square->length, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y + square->length);
     pixel_line(line_3->ptrShape, pixel, nb_pixels);
     Shape* line = create_line_shape(square->p->pos_x, square->p->pos_y, square->p->pos_x + square->length, square->p->pos_y);
     pixel_line(line->ptrShape, pixel, nb_pixels);
 }
 
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel, int* nb_pixels){
-    Shape* line_1 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x, rectangle->p->pos_y + rectangle->width);
+    Shape* line_1 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length);
     pixel_line(line_1->ptrShape, pixel, nb_pixels);
-    Shape* line_2 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y + rectangle->width, rectangle->p->pos_x + rectangle->height, rectangle->p->pos_y + rectangle->width);
+    Shape* line_2 = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y + rectangle->length, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
     pixel_line(line_2->ptrShape, pixel, nb_pixels);
-    Shape* line_3 = create_line_shape(rectangle->p->pos_x + rectangle->height, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->height, rectangle->p->pos_y + rectangle->width);
+    Shape* line_3 = create_line_shape(rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y + rectangle->length);
     pixel_line(line_3->ptrShape, pixel, nb_pixels);
-    Shape * line = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->height, rectangle->p->pos_y);
+    Shape* line = create_line_shape(rectangle->p->pos_x, rectangle->p->pos_y, rectangle->p->pos_x + rectangle->length, rectangle->p->pos_y);
     pixel_line(line->ptrShape, pixel, nb_pixels);
 }
+
 void pixel_polygon(Polygon* polygon, Pixel** pixel, int* nb_pixels){
 
     for(int i =0; i<polygon->n-1; i++){
@@ -166,29 +168,11 @@ void pixel_polygon(Polygon* polygon, Pixel** pixel, int* nb_pixels){
     }
 }
 
-Pixel** create_shape_to_pixel(Shape * shape,int* nb_pixels){
-    Pixel** pixel = (Pixel**) malloc(*nb_pixels * sizeof (Pixel*));
-    *nb_pixels = 0;
+Pixel** create_shape_to_pixel(Shape * shape, int* nb_pixels){
     switch (shape->shape_type) {
         case POINT:
-            pixel_point(shape, pixel, nb_pixels);
-            break;
-        case LINE:
-            pixel_line(shape->ptrShape, pixel, nb_pixels);
-            break;
-        case SQUARE:
-            pixel_square(shape->ptrShape, pixel, nb_pixels);
-            break;
-        case RECTANGLE:
-            pixel_rectangle(shape->ptrShape, pixel, nb_pixels);
-            break;
-        case CIRCLE:
-            pixel_circle(shape->ptrShape, pixel, nb_pixels);
-            break;
-        case POLYGON:
-            pixel_polygon(shape->ptrShape, pixel, nb_pixels);
-            break;
-    }
 
+    }
+    Pixel** pixel = 0;
     return pixel;
 }

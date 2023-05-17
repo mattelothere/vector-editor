@@ -5,6 +5,8 @@
 #ifndef VECTOR_EDITOR_COMMAND_H
 #define VECTOR_EDITOR_COMMAND_H
 
+#include "area.h"
+
 struct command {
     char name[50];
     int int_size;
@@ -18,7 +20,7 @@ Command* create_command();
 void add_str_param(Command* cmd, char* p);
 void add_int_param(Command* cmd, int p);
 void free_cmd(Command* cmd);
-int read_exec_command(Command* cmd);
+int read_exec_command(Command* cmd, Area* area);    // diff from instructions Added area param
 void read_from_stdin(Command* cmd);
 
 

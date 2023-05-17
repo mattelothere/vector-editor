@@ -140,7 +140,7 @@ int add_a_shape(Shape** allShapesList, int nShapes){
     if (validShape == 1){
         allShapesList = realloc(allShapesList, (nShapes+1)*sizeof(Shape*));
         allShapesList[nShapes] = myShape;
-        printf("\n");   // DEBUG SAMERE
+        printf("\n");
         return 0;
     }else{
         return 1;

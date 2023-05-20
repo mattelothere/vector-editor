@@ -2,10 +2,11 @@
 // Created by matte on 10/05/2023.
 //
 #include "command.h"
+#include "area.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "area.h"
+
 
 Command* create_command(){
     Command* command = (Command*) malloc(sizeof(Command));
@@ -40,8 +41,10 @@ int read_exec_command(Command* cmd, Area* area){
         for (int i = 0; i < HEIGHT; i++){
             printf("\n");
         }
-    } else if (strcmp(cmd->name, "exit") == 0) {    // close the program
-        // shot
+    } else if (strcmp(cmd->name, "exit") == 0) {
+        // close the program
+        printf("FINITO LE PROGRAM Goodybyey\n");
+        return 0; // scan for 0 in main.c to exit the loop
     } else if (strcmp(cmd->name, "point") == 0) {
         add_shape_to_area(
                 area,
@@ -84,7 +87,7 @@ int read_exec_command(Command* cmd, Area* area){
 
 
     } else if (strcmp(cmd->name, "plot") == 0) {
-        draw_area(area);    // todo : change parameters
+//        draw_area(area);    // todo : change parameters
         print_area(area);
     } else if (strcmp(cmd->name, "list") == 0) {
         for (int i = 0; i<area->nb_shape; i++){

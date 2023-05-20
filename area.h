@@ -9,6 +9,7 @@
 #define BOOL int
 
 #include "shapes.h"
+#include "pixel.h"  // importing pixel struct
 
 struct area {
     unsigned int width; // Number of pixels in width or number of columns (y-axis)

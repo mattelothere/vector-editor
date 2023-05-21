@@ -24,7 +24,7 @@ typedef struct square {
 
 typedef struct rectangle {
     Point *p;
-    int length;
+    int height;
     int width;
 }Rectangle;
 

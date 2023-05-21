@@ -55,7 +55,7 @@ Shape *create_square_shape(int px, int py, int length){
     shp->ptrShape = square;
     return shp;
 }
-Shape *create_rectangle_shape(int px, int py, int width, int height){
+Shape *create_rectangle_shape(int px, int py, int height, int width){
     Shape *shp = create_empty_shape(RECTANGLE);
     Point *p = create_point(px, py);
     Rectangle *rectangle = create_rectangle(p, width, height);

@@ -17,11 +17,12 @@ int main(){
 
     BOOL running = 1;
 
-    Area* area = create_area(10, 10);
+    Area* area = create_area(70, 25);
+    int nb_pixel = 0;
     while (running) {
         Command* myCommand = create_command();
         read_from_stdin(myCommand);
-        running = read_exec_command(myCommand, area);
+        running = read_exec_command(myCommand, area, &nb_pixel);
     }
 
     printf("MAIN.C END REACHED : Bye !");

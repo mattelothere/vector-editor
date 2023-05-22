@@ -51,7 +51,7 @@ void add_int_param(Command* cmd, int p){
 }
 
 void free_cmd(Command* cmd){
-    free(cmd);  // TODO : check if this is enough to free up the memory
+    free(cmd);
 }
 
 /*
@@ -71,12 +71,18 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
         // close the program
         printf("See ya !\n");
         return 0; // scan for 0 in main.c to exit the loop
-    } else if (strcmp(cmd->name, "point") == 0 && (cmd->int_params[0] <= SCREEN_HEIGHT  &&  cmd->int_params[0] > 0) && (cmd->int_params[1] <= SCREEN_WIDTH  &&  cmd->int_params[1] > 0) && (cmd->int_size == 2)) {
-        add_shape_to_area(
-                area,
-                create_point_shape(cmd->int_params[0], cmd->int_params[1])
-        );
-        return 1;
+    } else if ((strcmp(cmd->name, "point") == 0) && cmd->int_size == 2){        // todo : bugfix : point a b crashes the pgrame
+            {
+                if ((cmd->int_params[0] <= SCREEN_HEIGHT  &&  cmd->int_params[0] > 0) && (cmd->int_params[1] <= SCREEN_WIDTH  &&  cmd->int_params[1] > 0))
+                {
+                    add_shape_to_area(
+                            area,
+                            create_point_shape(cmd->int_params[0], cmd->int_params[1])
+                    );
+                    return 1;
+                }
+            }
+
     } else if (strcmp(cmd->name, "line") == 0 && cmd->int_size == 4) {
         for (int i = 0; i< cmd->int_size; i += 2){
             if ( ((cmd->int_params[i] <= SCREEN_HEIGHT  &&  cmd->int_params[i] > 0) && (cmd->int_params[i+1] <= SCREEN_WIDTH  &&  cmd->int_params[i+1] > 0)) == 0 ) {
@@ -130,10 +136,13 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
     } else if (strcmp(cmd->name, "plot\n") == 0) {
         draw_area(area, nb_pixel);
         print_area(area);
-    } else if (strcmp(cmd->name, "list\n") == 0 && area->nb_shape != 0) {
-        for (int i = 0; i<area->nb_shape; i++){
-            print_shape(area->shapes[i]);
-        }
+    } else if (strcmp(cmd->name, "list\n") == 0) {
+        if (area->nb_shape != 0){                       // execute this iff there are shapes to list lol u dumb or what
+            for (int i = 0; i < area->nb_shape; i++) {
+                print_shape(area->shapes[i]);
+            }
+        }else printf("Error : No shape to display yet\n");
+
     } else if (strcmp(cmd->name, "delete") == 0) {
         int deleted_id = 0;
         for (int i = 0; i<area->nb_shape; i++){
@@ -156,6 +165,9 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
         printf("Error : couldn't interpret the command : %s"
                "Please try again, (type 'help' to list all commands)\n", cmd->name); 
     }
+
+
+    return 1; // just in case, return 1 so that the loop continues
 }
 
 

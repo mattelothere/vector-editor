@@ -32,6 +32,7 @@ void clear_area(Area* area){
     for (int i = 0; i < (int) area->height; i++) {
         for (int j = 0; j < (int) area->width; j++) {
             area->mat[i][j] = 0; //each px of the matrix is initialized to 0
+
         }
     }
 }
@@ -39,7 +40,7 @@ void clear_area(Area* area){
 
 
 void erase_area(Area* area) {
-    for (int i = 0; i < area->nb_shape; i++) {
+    for (int i = 0; i < area->nb_shape; i++) {  // delete all shapes
         delete_shape(area->shapes[i]);
     }
 }
@@ -50,7 +51,10 @@ void delete_area(Area* area){
     erase_area(area);
 }
 
-void draw_area(Area* area, int* nb_pixels){     //TODO doesnt work
+/*
+ * Draw area is equivalent to pygame's blit function, we take shape, look where it is, and copy the 1's onto the mat
+ */
+void draw_area(Area* area, int* nb_pixels){
     Pixel ** L;
     for(int i = 0; i< area->nb_shape; i++){
         L = create_shape_to_pixel(area->shapes[i], nb_pixels);
@@ -66,13 +70,14 @@ void print_area(Area* area){
         for (int j = 0; j< area->width; j++) {
             switch (area->mat[i][j]) {
                 case 0:
-                    printf(".");
+                    printf(". ");
                     break;
                 case 1:
-                    printf("#");
+                    printf("# ");
                     break;
             }
         }
     }
+    printf("\n");
 
 }

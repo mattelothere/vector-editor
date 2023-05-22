@@ -31,7 +31,7 @@ int main(){
         running = read_exec_command(myCommand, area, &nb_pixel);    // fetch output of read_exec
     }
 
-    printf("MAIN.C END REACHED : Bye !");
+    printf("MAIN.C END REACHED : Bye !");   // todo : remove before last export of the project to moodle
     return 0;
 }
 

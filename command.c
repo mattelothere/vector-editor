@@ -8,6 +8,27 @@
 #include <string.h>
 
 
+
+void print_help(){
+    printf("Here are the available commands:\n");
+    printf("- clear: Clears the drawing area.\n");
+    printf("- exit: Closes the program.\n");
+    printf("- point x y: Adds a point shape at coordinates (x, y).\n");
+    printf("- line x1 y1 x2 y2: Adds a line shape from (x1, y1) to (x2, y2).\n");
+    printf("- circle x y r: Adds a circle shape with center (x, y) and radius r.\n");
+    printf("- square x y side: Adds a square shape with top-left corner (x, y) and side length.\n");
+    printf("- rectangle x y width height: Adds a rectangle shape with top-left corner (x, y), width, and height.\n");
+    printf("- polygon x1 y1 x2 y2 ... xn yn: Adds a polygon shape with vertices (x1, y1), (x2, y2), ..., (xn, yn).\n"
+           "The last point should be the same as the first to close the polygon.\n");
+    printf("- plot: Displays the drawing area with pixels.\n");
+    printf("- list: Lists all shapes in the drawing area.\n");
+    printf("- delete id: Deletes the shape with the specified ID.\n");
+    printf("- erase: Erases the entire drawing area.\n");
+    printf("- help: Displays this help message.\n");
+    printf("\nPlease enter a command or type 'help' to see this list again.\n");
+
+}
+
 Command* create_command(){
     Command* command = (Command*) malloc(sizeof(Command));
     command->str_size = 0;
@@ -34,7 +55,8 @@ void free_cmd(Command* cmd){
 }
 
 /*
- * Returns 1 if a shape has been created
+ * Returns 1 if a command has been executed with no errors
+ * 0 in some other cases to stop the program's execution
  */
 int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
     Shape* shp; // inti shp for all shape created in the if else
@@ -47,7 +69,7 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
         }
     } else if (strcmp(cmd->name, "exit\n") == 0) {
         // close the program
-        printf("FINITO LE PROGRAM Goodybyey\n");
+        printf("See ya !\n");
         return 0; // scan for 0 in main.c to exit the loop
     } else if (strcmp(cmd->name, "point") == 0 && (cmd->int_params[0] <= SCREEN_HEIGHT  &&  cmd->int_params[0] > 0) && (cmd->int_params[1] <= SCREEN_WIDTH  &&  cmd->int_params[1] > 0) && (cmd->int_size == 2)) {
         add_shape_to_area(
@@ -129,11 +151,16 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
     } else if (strcmp(cmd->name, "erase\n") == 0) {
         delete_area(area);
     } else if (strcmp(cmd->name, "help\n") == 0) {
-        printf("Ouais c'est greg \n"); //todo relink to print_help function
+        print_help();
     } else {
-        printf("Retape la commande sagouin\n"); // todo : use a better language
+        printf("Error : couldn't interpret the command : %s"
+               "Please try again, (type 'help' to list all commands)\n", cmd->name); 
     }
 }
+
+
+
+
 
 void read_from_stdin(Command* cmd){
     printf("---->\n");

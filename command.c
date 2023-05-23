@@ -71,7 +71,7 @@ int read_exec_command(Command* cmd, Area* area, int* nb_pixel){
         // close the program
         printf("See ya !\n");
         return 0; // scan for 0 in main.c to exit the loop
-    } else if ((strcmp(cmd->name, "point") == 0) && cmd->int_size == 2){        // todo : bugfix : point a b crashes the pgrame
+    } else if ((strcmp(cmd->name, "point") == 0) && cmd->int_size == 2){        // todo : bugfix : point a b crashes the pgram
             {
                 if ((cmd->int_params[0] <= SCREEN_HEIGHT  &&  cmd->int_params[0] > 0) && (cmd->int_params[1] <= SCREEN_WIDTH  &&  cmd->int_params[1] > 0))
                 {

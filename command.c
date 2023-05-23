@@ -37,11 +37,9 @@ Command* create_command(){
 }
 
 void add_str_param(Command* cmd, char* p){
-    int i = 0;
-    while (p[i] != '\0'){
-        cmd->str_params[cmd->str_size][i] = p[i];
-    }
+    cmd->str_params[cmd->str_size] = p;
     cmd->str_size++;
+
 
 }
 
